@@ -569,7 +569,68 @@ a {
   font-weight: 500;
 }
 
+/* Skill Highlights in About Section */
+.about-skills-highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+}
+
+.about-skill-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.skill-group-title {
+  font-weight: 700;
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+  min-width: 170px;
+}
+
+.skill-group-items {
+  color: var(--text-main);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+}
+
+/* Unique Selling Proposition (USP) Box */
+.about-usp-box {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.08), rgba(139, 92, 246, 0.08));
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.usp-badge {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-cyan);
+  margin-bottom: 0.5rem;
+}
+
+.about-usp-box p {
+  font-size: 0.98rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
 /* Services Section */
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
