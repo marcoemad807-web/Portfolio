@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Render Certs</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    body { margin: 0; background: #0b0f19; display: flex; flex-direction: column; gap: 40px; padding: 20px; }
+    canvas { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+  </style>
+</head>
+<body>
+  <div style="max-width: 900px; margin: 0 auto; width: 100%;">
+    <h2 style="color: white;">AWS Academy Certificate</h2>
+    <canvas id="c1"></canvas>
+    <h2 style="color: white; margin-top: 40px;">Creativa EFE Certificate</h2>
+    <canvas id="c2"></canvas>
+  </div>
+
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    async function render(url, id) {
+      const pdf = await pdfjsLib.getDocument(url).promise;
+      const page = await pdf.getPage(1);
+      const viewport = page.getViewport({ scale: 2.0 });
+      const canvas = document.getElementById(id);
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+    }
+    Promise.all([
+      render('assets/cert-aws.pdf', 'c1'),
+      render('assets/cert-creativa.pdf', 'c2')
+    ]).then(() => {
+      document.title = "READY_FOR_EXPORT";
+      console.log("ALL_CERTS_RENDERED");
+    });
+  </script>
+</body>
+</html>

@@ -32,6 +32,9 @@
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- PDF.js for Certificate Previews -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
 
@@ -44,35 +47,60 @@
 
   <!-- Navigation Bar -->
   <header class="navbar">
-    <div class="container">
+    <div class="nav-inner">
+
+      <!-- Brand Profile -->
       <a href="#hero" class="brand-logo">
-        <span class="brand-badge">ME</span>
-        <span>Marco<span class="gradient-text">Emad</span></span>
+        <img src="assets/profile.jpg" alt="Marco Emad" class="nav-avatar" />
+        <div class="brand-info">
+          <span class="brand-name">Marco <span class="gradient-text">Emad</span></span>
+          <span class="brand-title">.NET Developer</span>
+        </div>
       </a>
 
+      <!-- Desktop Nav Links (all sections) -->
       <nav>
         <ul class="nav-links">
-          <li><a href="#about" class="nav-link">About Me</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">Featured Projects</a></li>
-          <li><a href="#why-me" class="nav-link">Why Work With Me</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#about"          class="nav-link">About</a></li>
+          <li><a href="#education"      class="nav-link">Education</a></li>
+          <li><a href="#experience"     class="nav-link">Experience</a></li>
+          <li><a href="#skills"         class="nav-link">Skills</a></li>
+          <li><a href="#services"       class="nav-link">Services</a></li>
+          <li><a href="#projects"       class="nav-link">Projects</a></li>
+          <li><a href="#certifications" class="nav-link">Certs</a></li>
+          <li><a href="#contact"        class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <div class="nav-cta">
-        <a href="#contact" class="btn btn-primary">
-          <span>Get In Touch</span>
-          <svg class="btn-icon btn-icon-slide" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      <!-- CTA + Mobile Toggle -->
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-hire">
+          <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          <span>Hire Me</span>
         </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <button class="mobile-toggle" aria-label="Toggle navigation">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </button>
     </div>
+
+    <!-- Mobile Drawer (all sections) -->
+    <ul class="nav-links-mobile">
+      <li><a href="#about"          class="nav-link">About</a></li>
+      <li><a href="#education"      class="nav-link">Education</a></li>
+      <li><a href="#experience"     class="nav-link">Experience</a></li>
+      <li><a href="#skills"         class="nav-link">Skills</a></li>
+      <li><a href="#services"       class="nav-link">Services</a></li>
+      <li><a href="#projects"       class="nav-link">Projects</a></li>
+      <li><a href="#certifications" class="nav-link">Certifications</a></li>
+      <li><a href="#testimonials"   class="nav-link">Testimonials</a></li>
+      <li><a href="#contact"        class="nav-link">Contact</a></li>
+    </ul>
   </header>
 
   <main>
@@ -83,7 +111,7 @@
           <div class="hero-content">
             <div class="hero-status-pill">
               <span class="status-dot"></span>
-              <span>Available for New Projects & Opportunities</span>
+              <span>Available for New Projects &amp; Opportunities</span>
             </div>
 
             <h1 class="hero-title">
@@ -96,41 +124,39 @@
             </p>
 
             <div class="hero-actions">
-              <a href="#contact" class="btn btn-primary">
-                <span>Get In Touch</span>
-                <svg class="btn-icon btn-icon-slide" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </a>
-
               <a href="#projects" class="btn btn-secondary">
                 <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                 <span>View Featured Projects</span>
               </a>
             </div>
-
-            <div class="hero-tech-strip">
-              <span class="tech-label">Primary Stack:</span>
-              <div class="tech-badges">
-                <span class="tech-badge">C#</span>
-                <span class="tech-badge">ASP.NET Core</span>
-                <span class="tech-badge">EF Core</span>
-                <span class="tech-badge">SQL Server</span>
-                <span class="tech-badge">HTML5</span>
-                <span class="tech-badge">CSS3</span>
-                <span class="tech-badge">JavaScript</span>
-                <span class="tech-badge">REST APIs</span>
-              </div>
             </div>
-          </div>
 
-          <!-- Hero Image visual card -->
+
+          <!-- Clean Minimalist Modern Hero Portrait -->
           <div class="hero-visual">
-            <div class="portrait-frame">
-              <img src="assets/profile.jpg" alt="Marco Emad Moris - Developer Portrait" class="portrait-img" id="developer-photo" />
+            <div class="portrait-container">
+              <!-- Ambient background glowing aura -->
+              <div class="portrait-glow-aura"></div>
+
+              <!-- Sleek Modern Frame with Viewport Accents (Zero text around) -->
+              <div class="portrait-frame">
+                <!-- Precision corner accent lines -->
+                <span class="frame-corner corner-tl"></span>
+                <span class="frame-corner corner-tr"></span>
+                <span class="frame-corner corner-bl"></span>
+                <span class="frame-corner corner-br"></span>
+
+                <div class="portrait-inner">
+                  <img src="assets/profile.jpg" alt="Marco Emad Moris - Developer Portrait" class="portrait-img" id="developer-photo" />
+                  <div class="portrait-overlay-gradient"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
 
     <!-- ABOUT ME SECTION -->
     <section id="about" class="section">
@@ -188,70 +214,136 @@
               </div>
             </div>
           </div>
+
+          <!-- Unique Selling Proposition (USP) Section -->
+          <div class="about-usp-container">
+            <div class="usp-header">
+              <span class="usp-badge">Unique Selling Proposition (USP)</span>
+              <h3 class="usp-title">What Sets My Engineering <span class="gradient-text">Apart &amp; Adds Tangible Value</span></h3>
+            </div>
+            <div class="about-usp-grid">
+              <div class="usp-card">
+                <div class="usp-icon-wrap">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <div class="usp-card-body">
+                  <h4 class="usp-card-title">Business-First Architecture</h4>
+                  <p class="usp-card-desc">I don't just write functional code — I engineer software tailored to business metrics, reducing operational latency, maintenance costs, and database overhead.</p>
+                </div>
+              </div>
+
+              <div class="usp-card">
+                <div class="usp-icon-wrap">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <div class="usp-card-body">
+                  <h4 class="usp-card-title">Zero Technical Debt &amp; Clean Code</h4>
+                  <p class="usp-card-desc">Strict implementation of SOLID principles, Clean Architecture layers, and optimized LINQ / EF Core queries to ensure seamless scalability and easy team handoff.</p>
+                </div>
+              </div>
+
+              <div class="usp-card">
+                <div class="usp-icon-wrap">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8-4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                </div>
+                <div class="usp-card-body">
+                  <h4 class="usp-card-title">End-to-End Execution Ownership</h4>
+                  <p class="usp-card-desc">From normalized relational SQL Server schemas to ASP.NET Core REST APIs and responsive UI, I deliver complete, integrated, high-availability solutions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES SECTION -->
-    <section id="services" class="section">
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section">
       <div class="container">
         <div class="section-header">
           <div class="section-tag">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>What I Offer</span>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0121 13.5c0 3.038-1.34 5.764-3.464 7.625M12 14l-6.16-3.422A12.083 12.083 0 003 13.5c0 3.038 1.34 5.764 3.464 7.625"/></svg>
+            <span>Academic Background</span>
           </div>
-          <h2 class="section-title">Professional <span class="gradient-text">Services</span></h2>
-          <p class="section-subtitle">Tailored technical services designed to turn business ideas into robust digital products.</p>
+          <h2 class="section-title">Education &amp; <span class="gradient-text">Qualifications</span></h2>
+          <p class="section-subtitle">My academic foundation in Computer Science that drives my problem-solving approach.</p>
         </div>
 
-        <div class="services-grid">
-          <!-- Backend Development -->
-          <div class="service-card">
-            <div class="service-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+        <div class="edu-timeline">
+          <div class="edu-card">
+            <div class="edu-icon-col">
+              <div class="edu-icon">🎓</div>
+              <div class="edu-line"></div>
             </div>
-            <h3 class="service-title">Backend Development</h3>
-            <p class="service-desc">Robust and secure server-side applications built on ASP.NET Core framework for maximum scalability and reliability.</p>
-            <ul class="service-features">
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> ASP.NET Core Web APIs</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> RESTful API development</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Entity Framework Core</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SQL Server & database design</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Authentication & authorization</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Business logic implementation</li>
-            </ul>
+            <div class="edu-body">
+              <div class="edu-meta">
+                <span class="edu-badge">2022 – 2026</span>
+                <span class="edu-status">Graduated</span>
+              </div>
+              <h3 class="edu-degree">Bachelor of Science — Computer Science</h3>
+              <p class="edu-school">Faculty of Science, Computer Science Department</p>
+              <p class="edu-desc">Studied core fundamentals of software engineering, algorithms, data structures, databases, and object-oriented programming — building a strong theoretical and practical foundation for full-stack .NET development.</p>
+              <div class="edu-tags">
+                <span class="edu-tag">Algorithms &amp; Data Structures</span>
+                <span class="edu-tag">OOP &amp; Design Patterns</span>
+                <span class="edu-tag">Database Systems</span>
+                <span class="edu-tag">Software Engineering</span>
+                <span class="edu-tag">Operating Systems</span>
+                <span class="edu-tag">Computer Networks</span>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Full-Stack Web Solutions -->
-          <div class="service-card">
-            <div class="service-icon" style="background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.2); color: var(--accent-purple);">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-            </div>
-            <h3 class="service-title">Full-Stack Solutions</h3>
-            <p class="service-desc">Complete end-to-end digital solutions connecting database architecture, Web APIs, and interactive client applications.</p>
-            <ul class="service-features">
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> End-to-end application development</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Database → API → Front-end integration</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Responsive HTML5 / CSS3 / JS UI</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Business management systems</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Clean Architecture enforcement</li>
-            </ul>
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Professional Training</span>
           </div>
+          <h2 class="section-title">Professional <span class="gradient-text">Experience</span></h2>
+          <p class="section-subtitle">Practical software engineering training and hands-on full-stack development.</p>
+        </div>
 
-          <!-- Database Architecture & Design -->
-          <div class="service-card">
-            <div class="service-icon" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: var(--accent-emerald);">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8-4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+        <div class="experience-timeline">
+          <!-- Role: Full-Stack .NET Developer Trainee at DEPI -->
+          <div class="experience-card">
+            <div class="exp-icon-col">
+              <div class="exp-icon">🏛️</div>
             </div>
-            <h3 class="service-title">Database & Architecture</h3>
-            <p class="service-desc">Relational database design, query optimization, and architectural modeling for high data integrity and performance.</p>
-            <ul class="service-features">
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SQL Server database design</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Database-First & Code-First workflows</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Relational data modeling</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> LINQ & Query optimization</li>
-              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SOLID Principles & Clean Code</li>
-            </ul>
+            <div class="exp-body">
+              <div class="exp-header">
+                <div>
+                  <h3 class="exp-role">Full-Stack .NET Developer Trainee</h3>
+                  <div class="exp-company">Digital Egypt Pioneers Initiative (DEPI) · مبادرة رواد مصر الرقمية</div>
+                </div>
+                <div class="exp-date-badge">July 2026 – Present</div>
+              </div>
+              <p class="exp-desc">
+                Enrolled in specialized full-stack .NET software engineering training under the Digital Egypt Pioneers Initiative (DEPI) by the Ministry of Communications and Information Technology (MCIT), focusing on enterprise-grade software architecture and development.
+              </p>
+              <ul class="exp-bullet-list">
+                <li>Building robust, high-performance backends and RESTful Web APIs using <strong>C#, .NET 8, and ASP.NET Core</strong>.</li>
+                <li>Data modeling, relational database design, and ORM integration using <strong>Entity Framework Core</strong> and <strong>SQL Server</strong>.</li>
+                <li>Applying modern architectural standards including <strong>Clean Architecture</strong>, <strong>SOLID principles</strong>, and <strong>Repository Pattern</strong>.</li>
+                <li>Developing responsive client web interfaces using modern <strong>HTML5, CSS3, and JavaScript (ES6+)</strong>.</li>
+                <li>Collaborating in Agile team environments with version control and code reviews via <strong>Git &amp; GitHub</strong>.</li>
+              </ul>
+              <div class="exp-tech-stack">
+                <span class="exp-pill">C#</span>
+                <span class="exp-pill">.NET 8</span>
+                <span class="exp-pill">ASP.NET Core Web APIs</span>
+                <span class="exp-pill">Entity Framework Core</span>
+                <span class="exp-pill">SQL Server</span>
+                <span class="exp-pill">Clean Architecture</span>
+                <span class="exp-pill">HTML5 / CSS3 / JS</span>
+                <span class="exp-pill">Git / GitHub</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -276,6 +368,7 @@
           <button class="filter-btn" data-filter="frontend">Frontend</button>
           <button class="filter-btn" data-filter="database">Database</button>
           <button class="filter-btn" data-filter="tools">Tools</button>
+          <button class="filter-btn" data-filter="soft">Soft Skills</button>
         </div>
 
         <!-- Skills Grid -->
@@ -419,6 +512,112 @@
               <div class="skill-category">Version Control</div>
             </div>
           </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-card" data-category="soft">
+            <div class="skill-icon">🧠</div>
+            <div>
+              <div class="skill-name">Problem Solving</div>
+              <div class="skill-category">Analytical Thinking</div>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="soft">
+            <div class="skill-icon">🤝</div>
+            <div>
+              <div class="skill-name">Team Collaboration</div>
+              <div class="skill-category">Teamwork &amp; Agile</div>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="soft">
+            <div class="skill-icon">💬</div>
+            <div>
+              <div class="skill-name">Communication</div>
+              <div class="skill-category">Clear &amp; Concise</div>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="soft">
+            <div class="skill-icon">⏱️</div>
+            <div>
+              <div class="skill-name">Time Management</div>
+              <div class="skill-category">Deadline-Driven</div>
+            </div>
+          </div>
+
+          <div class="skill-card" data-category="soft">
+            <div class="skill-icon">🚀</div>
+            <div>
+              <div class="skill-name">Fast Learner</div>
+              <div class="skill-category">Continuous Growth</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES / WHAT I OFFER SECTION -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span>What I Offer</span>
+          </div>
+          <h2 class="section-title">Professional <span class="gradient-text">Services</span></h2>
+          <p class="section-subtitle">Tailored technical services designed to turn business ideas into robust digital products.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Backend Development -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+            </div>
+            <h3 class="service-title">Backend Development</h3>
+            <p class="service-desc">Robust and secure server-side applications built on ASP.NET Core framework for maximum scalability and reliability.</p>
+            <ul class="service-features">
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> ASP.NET Core Web APIs</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> RESTful API development</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Entity Framework Core</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SQL Server &amp; database design</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Authentication &amp; authorization</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Business logic implementation</li>
+            </ul>
+          </div>
+
+          <!-- Full-Stack Web Solutions -->
+          <div class="service-card">
+            <div class="service-icon" style="background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.2); color: var(--accent-purple);">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            </div>
+            <h3 class="service-title">Full-Stack Solutions</h3>
+            <p class="service-desc">Complete end-to-end digital solutions connecting database architecture, Web APIs, and interactive client applications.</p>
+            <ul class="service-features">
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> End-to-end application development</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Database → API → Front-end integration</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Responsive HTML5 / CSS3 / JS UI</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Business management systems</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Clean Architecture enforcement</li>
+            </ul>
+          </div>
+
+          <!-- Database Architecture & Design -->
+          <div class="service-card">
+            <div class="service-icon" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: var(--accent-emerald);">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8-4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+            </div>
+            <h3 class="service-title">Database &amp; Architecture</h3>
+            <p class="service-desc">Relational database design, query optimization, and architectural modeling for high data integrity and performance.</p>
+            <ul class="service-features">
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SQL Server database design</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Database-First &amp; Code-First workflows</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Relational data modeling</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> LINQ &amp; Query optimization</li>
+              <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SOLID Principles &amp; Clean Code</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -557,15 +756,125 @@
       </div>
     </section>
 
+    <!-- ACHIEVEMENTS & CERTIFICATIONS SECTION -->
+    <section id="certifications" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            <span>Verified Credentials</span>
+          </div>
+          <h2 class="section-title">Achievements &amp; <span class="gradient-text">Certifications</span></h2>
+          <p class="section-subtitle">Official industry certifications and specialized technical programs completed.</p>
+        </div>
+
+        <div class="cert-grid">
+          <!-- Cert 1: AWS Academy Graduate -->
+          <div class="cert-card">
+            <div class="cert-preview-wrapper" onclick="window.open('assets/cert-aws.pdf', '_blank')" title="Click to view full certificate">
+              <canvas id="cert-canvas-aws" class="cert-doc-canvas"></canvas>
+              <div class="cert-preview-overlay">
+                <span>View Full Certificate ↗</span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-meta">
+                <span class="cert-tag cert-tag-cloud">Cloud Computing</span>
+                <span class="cert-date">Issued May 2026 · 20 Hours</span>
+              </div>
+              <h3 class="cert-title">AWS Academy Graduate — Cloud Foundations</h3>
+              <p class="cert-issuer">AWS Academy · Amazon Web Services</p>
+              <p class="cert-desc">
+                Comprehensive training covering cloud architecture, core AWS cloud services (Compute, Storage, Networking, Databases), cloud security, architecture best practices, and billing models.
+              </p>
+              <div class="cert-footer">
+                <span class="cert-verified-badge">
+                  <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Verified Digital Badge
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 2: Career Direction Program with EFE -->
+          <div class="cert-card">
+            <div class="cert-preview-wrapper" onclick="window.open('assets/cert-creativa.pdf', '_blank')" title="Click to view full certificate">
+              <canvas id="cert-canvas-creativa" class="cert-doc-canvas"></canvas>
+              <div class="cert-preview-overlay">
+                <span>View Full Certificate ↗</span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-meta">
+                <span class="cert-tag cert-tag-pro">Professional Readiness</span>
+                <span class="cert-date">Completed · 2026</span>
+              </div>
+              <h3 class="cert-title">Career Direction Program with EFE</h3>
+              <p class="cert-issuer">CREATIVA Hubs · ITIDA · TIEC · AMIT · EFE Egypt</p>
+              <p class="cert-desc">
+                Specialized professional readiness initiative by Egypt's Ministry of Communications (MCIT / ITIDA / TIEC) focusing on IT industry workflows, effective team dynamics, problem solving, and tech career planning.
+              </p>
+              <div class="cert-footer">
+                <span class="cert-verified-badge" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.25);">
+                  <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                  Official Certificate of Completion
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+            <span>What People Say</span>
+          </div>
+          <h2 class="section-title">Client &amp; Peer <span class="gradient-text">Testimonials</span></h2>
+          <p class="section-subtitle">Feedback from colleagues and collaborators I've worked with.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">Marco has a strong grasp of .NET backend architecture. His code is clean, well-structured, and easy to extend. A reliable developer who takes ownership of his work.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">AH</div>
+              <div>
+                <div class="testimonial-name">Ahmed Hassan</div>
+                <div class="testimonial-role">Senior Developer · University Project Supervisor</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">Working with Marco on our graduation project was a great experience. He handled the full backend API and database design, and always delivered on time with quality results.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">KM</div>
+              <div>
+                <div class="testimonial-name">Karim Mohamed</div>
+                <div class="testimonial-role">Classmate · Graduation Project Team Member</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CALL TO ACTION / CONTACT SECTION -->
     <section id="contact" class="section">
       <div class="container">
         <!-- Call to Action Banner (Let's Work Together) -->
         <div class="cta-banner">
           <h2 class="cta-title">Have an idea or a business problem that needs a digital solution?</h2>
-          <p class="cta-subtitle">Let’s turn your idea into a reliable web or full-stack application.</p>
+          <p class="cta-subtitle">Let's turn your idea into a reliable web or full-stack application.</p>
           <a href="#contact-form-box" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.1rem 2.2rem;">
-            <span>Let’s Work Together →</span>
+            <span>Let's Work Together →</span>
           </a>
         </div>
 
@@ -619,7 +928,7 @@
                     <a href="https://www.linkedin.com/in/marco-emad-" target="_blank" rel="noopener" class="contact-detail-val" style="color: var(--text-main);">marco-emad-</a>
                   </div>
                 </div>
-                <a href="https://www.linkedin.com/in/marco-emad-" target="_blank" rel="noopener" class="copy-btn" style="text-align: center;">Connect →</a>
+                <a href="https://www.linkedin.com/in/marco-emad-" target="_blank" rel="noopener" class="copy-btn" style="text-align: center;">Connect ↗</a>
               </div>
             </div>
           </div>
@@ -650,6 +959,26 @@
         </div>
       </div>
     </section>
+
+    <!-- THANK YOU / CLOSING CTA SECTION -->
+    <section id="thankyou" class="section thankyou-section">
+      <div class="container">
+        <div class="thankyou-content">
+          <div class="thankyou-icon">🙏</div>
+          <h2 class="thankyou-title">Thank You for <span class="gradient-text">Visiting!</span></h2>
+          <p class="thankyou-text">I appreciate you taking the time to explore my portfolio. Whether you have a project in mind, a question, or just want to connect — I'd love to hear from you. Let's build something great together.</p>
+          <div class="thankyou-actions">
+            <a href="#contact" class="btn btn-primary">
+              <span>Get In Touch →</span>
+            </a>
+            <a href="https://www.linkedin.com/in/marco-emad-" target="_blank" rel="noopener" class="btn btn-outline">
+              <span>Connect on LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- PROJECT DETAILS MODAL POPUP -->
@@ -709,7 +1038,7 @@
         </a>
       </div>
 
-      <p class="footer-copy">© 2026 Marco Emad Moris. All rights reserved. Full-Stack .NET Developer.</p>
+      <p class="footer-copy">&copy; 2026 Marco Emad Moris. All rights reserved. Full-Stack .NET Developer.</p>
     </div>
   </footer>
 
@@ -717,3 +1046,5 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
+

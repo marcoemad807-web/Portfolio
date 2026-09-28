@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyButtons();
   initContactForm();
   initActiveNavHighlight();
+  initCertificatePreviews();
 });
 
 /* --------------------------------------------------------------------------
@@ -33,18 +34,20 @@ function initNavbarScroll() {
    -------------------------------------------------------------------------- */
 function initMobileMenu() {
   const toggleBtn = document.querySelector('.mobile-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  const drawer    = document.querySelector('.nav-links-mobile');
 
-  if (!toggleBtn || !navLinks) return;
+  if (!toggleBtn || !drawer) return;
 
   toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('mobile-open');
+    const isOpen = drawer.classList.toggle('mobile-open');
+    toggleBtn.classList.toggle('open', isOpen);
   });
 
-  // Close menu on link click
-  navLinks.querySelectorAll('a').forEach(link => {
+  // Close drawer on any link click
+  drawer.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      navLinks.classList.remove('mobile-open');
+      drawer.classList.remove('mobile-open');
+      toggleBtn.classList.remove('open');
     });
   });
 }
@@ -285,3 +288,54 @@ function showToast(message, type = 'success') {
     toast.classList.remove('active');
   }, 3500);
 }
+
+/* --------------------------------------------------------------------------
+   10. Certificate Previews via PDF.js
+   -------------------------------------------------------------------------- */
+function initCertificatePreviews() {
+  if (typeof pdfjsLib === 'undefined') return;
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  function renderPdf(pdfPath, canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    pdfjsLib.getDocument(pdfPath).promise.then(pdf => {
+      pdf.getPage(1).then(page => {
+        const dpr = window.devicePixelRatio || 1;
+        const baseViewport = page.getViewport({ scale: 1.0 });
+        const containerWidth = canvas.parentElement.clientWidth || 500;
+        const scale = (containerWidth / baseViewport.width) * (dpr > 1 ? 1.5 : 1.2);
+        const viewport = page.getViewport({ scale });
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        canvas.style.width = '100%';
+        canvas.style.height = 'auto';
+
+        const ctx = canvas.getContext('2d');
+        page.render({
+          canvasContext: ctx,
+          viewport: viewport
+        });
+      });
+    }).catch(err => {
+      console.warn('Certificate render notice:', err);
+    });
+  }
+
+  // Initial render
+  renderPdf('assets/cert-aws.pdf', 'cert-canvas-aws');
+  renderPdf('assets/cert-creativa.pdf', 'cert-canvas-creativa');
+
+  // Re-render on window resize with debounce
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      renderPdf('assets/cert-aws.pdf', 'cert-canvas-aws');
+      renderPdf('assets/cert-creativa.pdf', 'cert-canvas-creativa');
+    }, 250);
+  });
+}
+
